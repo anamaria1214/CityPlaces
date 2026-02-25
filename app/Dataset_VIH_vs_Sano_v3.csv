@@ -1,0 +1,121 @@
+Sexo,Adherencia_Tratamiento,Tipo_Tratamiento,Edad,Carga_Viral_Log,Carga_Viral_Ajustada,CD4,Nivel_Riesgo_Conductual,Ocupacion,Clase
+Hombre,Alta,ARV_B,41,5.12,5.267436939669945,1040,Muy Bajo,Estudiante,VIH
+Mujer,Media,ARV_B,69,5.12,5.475734544658359,718,Muy Alto,Independiente,VIH
+Hombre,Baja,ARV_B,28,5.12,5.404297849805199,258,Bajo,Estudiante,VIH
+Hombre,Alta,ARV_A,66,9.12,9.42537052860819,1084,Muy Bajo,Estudiante,VIH
+Hombre,Media,ARV_B,25,5.19,5.391639974803147,547,Bajo,Desempleado,VIH
+Mujer,Alta,ARV_A,53,5.86,6.318143653709716,783,Alto,Jubilado,VIH
+Hombre,Alta,ARV_A,55,5.64,5.679332075660692,882,Bajo,Empleado,VIH
+Hombre,Alta,ARV_A,57,5.28,5.501108737114382,384,Alto,Empleado,VIH
+Hombre,Alta,ARV_A,37,4.12,4.452593625870554,807,Muy Bajo,Jubilado,Sano
+Mujer,Baja,ARV_B,52,5.41,5.59382595977349,900,Muy Bajo,Desempleado,VIH
+Hombre,Alta,ARV_A,65,3.57,3.680611384837793,737,Muy Bajo,Independiente,Sano
+Hombre,Alta,ARV_A,42,4.22,4.421529103106311,1182,Muy Bajo,Independiente,Sano
+Hombre,Alta,ARV_A,52,3.92,4.265138962612428,1103,Moderado,Estudiante,Sano
+Hombre,Baja,ARV_B,42,4.6,4.766109800331535,641,Alto,Jubilado,Sano
+Mujer,Alta,ARV_B,46,7.28,7.599601804035394,1062,Alto,Empleado,VIH
+Hombre,Alta,ARV_B,35,2.26,2.329564872438148,319,Muy Alto,Independiente,VIH
+Mujer,Baja,ARV_B,63,5.32,5.806593008272546,1095,Moderado,Desempleado,VIH
+Mujer,Baja,ARV_A,35,2.56,2.906678608897379,944,Moderado,Jubilado,Sano
+Mujer,Baja,ARV_A,19,3.93,4.226905389787888,783,Bajo,Desempleado,Sano
+Hombre,Alta,ARV_B,71,5.81,6.139118639917486,178,Alto,Independiente,VIH
+Mujer,Baja,ARV_A,52,4.58,4.882736857589625,488,Muy Alto,Empleado,Sano
+Hombre,Baja,ARV_A,33,3.21,3.51957320281508,649,Alto,Independiente,Sano
+Mujer,Alta,ARV_A,58,3.64,3.728416613159762,660,Muy Bajo,Jubilado,Sano
+Mujer,Baja,ARV_B,53,5.32,5.70358290447821,366,Bajo,Independiente,VIH
+Mujer,Alta,ARV_B,50,3.62,3.675611933225099,594,Muy Alto,Empleado,Sano
+Mujer,Media,ARV_A,21,4.76,4.934224849754659,1025,Alto,Desempleado,Sano
+Mujer,Baja,ARV_B,50,4.55,4.86821051958003,316,Muy Alto,Desempleado,VIH
+Mujer,Media,ARV_B,31,3.72,3.763131929977404,240,Muy Bajo,Jubilado,VIH
+Mujer,Alta,ARV_B,38,7.07,7.409493127981134,863,Alto,Empleado,VIH
+Mujer,Baja,ARV_B,65,5.26,5.436824510414031,188,Moderado,Jubilado,VIH
+Hombre,Alta,ARV_B,37,2.07,2.14793806294694,322,Muy Alto,Estudiante,VIH
+Hombre,Media,ARV_A,73,4.72,4.676141089453927,802,Muy Alto,Independiente,Sano
+Mujer,Alta,ARV_B,25,3.71,3.718346689549016,903,Alto,Empleado,Sano
+Mujer,Baja,ARV_A,24,5.52,5.726012276540208,625,Bajo,Independiente,VIH
+Mujer,Baja,ARV_A,20,3.55,3.820246243175858,605,Muy Alto,Independiente,Sano
+Hombre,Media,ARV_B,34,4.36,4.560636431720979,978,Moderado,Estudiante,Sano
+Mujer,Alta,ARV_A,50,5.11,5.365784591589682,1044,Moderado,Estudiante,VIH
+Hombre,Baja,ARV_A,65,5.54,5.885822271110229,1174,Muy Bajo,Estudiante,VIH
+Hombre,Media,ARV_A,29,3.06,3.125046365699095,536,Bajo,Estudiante,Sano
+Hombre,Baja,ARV_B,68,4.1,4.333362732380729,497,Bajo,Desempleado,Sano
+Hombre,Baja,ARV_B,39,3.93,4.045963348193438,339,Alto,Desempleado,VIH
+Hombre,Alta,ARV_A,72,3.72,3.73323305058794,654,Bajo,Desempleado,Sano
+Mujer,Baja,ARV_B,39,6.62,6.91191002062449,973,Moderado,Estudiante,VIH
+Mujer,Alta,ARV_B,63,4.99,5.296880586240507,1078,Bajo,Estudiante,VIH
+Mujer,Baja,ARV_B,47,2.99,3.173358905099981,1083,Alto,Estudiante,Sano
+Mujer,Media,ARV_B,55,5.6,5.878816950552118,283,Alto,Estudiante,VIH
+Mujer,Baja,ARV_A,55,7.05,7.641736526593773,207,Muy Bajo,Jubilado,VIH
+Hombre,Alta,ARV_A,62,5.74,6.068291216030878,834,Muy Alto,Desempleado,VIH
+Mujer,Alta,ARV_B,68,2.68,2.911873600593735,821,Bajo,Empleado,Sano
+Mujer,Media,ARV_B,71,3.92,4.339814333849795,322,Moderado,Estudiante,VIH
+Hombre,Baja,ARV_A,25,6.02,6.191591467683875,964,Alto,Empleado,VIH
+Mujer,Baja,ARV_A,44,3.65,3.728621178979505,229,Muy Bajo,Empleado,VIH
+Hombre,Media,ARV_B,44,5.03,5.455871222512293,1035,Bajo,Estudiante,VIH
+Mujer,Baja,ARV_A,51,5.43,5.621693726475894,352,Moderado,Jubilado,VIH
+Hombre,Baja,ARV_B,38,3.39,3.562468323030334,913,Muy Alto,Independiente,Sano
+Mujer,Alta,ARV_B,47,4.43,4.758431596942434,196,Muy Alto,Desempleado,VIH
+Mujer,Baja,ARV_A,50,0.61,0.7295706391293171,805,Muy Alto,Independiente,Sano
+Hombre,Baja,ARV_A,45,3.27,3.608988618198111,620,Muy Bajo,Desempleado,Sano
+Hombre,Media,ARV_B,64,4.2,4.559564413703347,1120,Muy Alto,Jubilado,Sano
+Hombre,Media,ARV_B,50,3.0,3.256939266970574,1185,Alto,Independiente,Sano
+Hombre,Alta,ARV_A,22,6.46,6.705729128575281,885,Muy Alto,Desempleado,VIH
+Hombre,Baja,ARV_B,65,2.78,2.998486266779322,933,Bajo,Independiente,Sano
+Hombre,Baja,ARV_A,36,3.97,4.199927199450688,1117,Alto,Jubilado,Sano
+Hombre,Baja,ARV_B,21,4.66,4.760373454005955,507,Alto,Empleado,Sano
+Hombre,Alta,ARV_A,52,6.23,6.683229904647686,1121,Muy Alto,Estudiante,VIH
+Mujer,Alta,ARV_A,66,2.78,2.999723653457857,817,Alto,Empleado,Sano
+Mujer,Media,ARV_A,34,5.9,6.19954900806311,522,Muy Alto,Jubilado,VIH
+Hombre,Alta,ARV_B,61,4.51,4.712190793901558,1181,Muy Alto,Desempleado,Sano
+Mujer,Baja,ARV_B,45,3.32,3.366169885529921,825,Alto,Independiente,Sano
+Mujer,Baja,ARV_A,47,5.05,5.322452407355864,239,Muy Bajo,Desempleado,VIH
+Mujer,Alta,ARV_B,46,4.74,5.023843911944565,847,Alto,Desempleado,Sano
+Mujer,Baja,ARV_A,63,3.78,3.885884501575672,689,Muy Alto,Estudiante,Sano
+Hombre,Baja,ARV_A,70,4.58,4.925220404909953,881,Muy Alto,Independiente,Sano
+Mujer,Alta,ARV_B,23,4.04,4.132279695351697,1018,Muy Bajo,Desempleado,Sano
+Hombre,Alta,ARV_B,52,4.64,4.659689964995756,190,Muy Alto,Jubilado,VIH
+Mujer,Baja,ARV_A,58,5.29,5.65847270908927,889,Alto,Independiente,VIH
+Mujer,Baja,ARV_B,54,6.4,6.67966339618979,651,Muy Bajo,Estudiante,VIH
+Mujer,Baja,ARV_B,41,3.01,3.147897041468698,1108,Muy Alto,Desempleado,Sano
+Hombre,Media,ARV_A,46,7.06,7.329248327717495,1078,Muy Bajo,Empleado,VIH
+Mujer,Media,ARV_A,66,2.16,2.10740372392826,610,Bajo,Empleado,Sano
+Hombre,Media,ARV_B,63,4.32,4.661523737472423,881,Moderado,Jubilado,Sano
+Mujer,Alta,ARV_A,70,5.21,5.401613101615308,901,Alto,Estudiante,VIH
+Hombre,Media,ARV_A,48,4.84,5.248095248814794,1074,Muy Alto,Desempleado,VIH
+Mujer,Alta,ARV_B,52,3.75,4.018230818621073,1058,Bajo,Desempleado,Sano
+Hombre,Alta,ARV_A,50,4.25,4.431024185328254,539,Moderado,Empleado,Sano
+Hombre,Media,ARV_A,69,3.91,3.996909759887314,1032,Moderado,Jubilado,Sano
+Mujer,Media,ARV_B,38,3.79,3.906253801327954,405,Moderado,Jubilado,Sano
+Hombre,Media,ARV_B,49,5.52,5.674747686890482,858,Bajo,Independiente,VIH
+Mujer,Baja,ARV_A,40,4.93,5.385211335958818,599,Alto,Independiente,VIH
+Mujer,Media,ARV_A,50,3.67,3.869944123022982,159,Moderado,Estudiante,VIH
+Mujer,Baja,ARV_B,20,5.58,5.974020554254663,973,Alto,Desempleado,VIH
+Mujer,Alta,ARV_B,35,4.87,4.986764795098978,947,Alto,Jubilado,VIH
+Mujer,Baja,ARV_B,42,5.48,5.772103512959701,1026,Moderado,Jubilado,VIH
+Mujer,Media,ARV_B,59,5.26,5.640786193880857,1178,Moderado,Estudiante,VIH
+Mujer,Alta,ARV_A,48,3.51,3.651998923806698,1165,Alto,Estudiante,Sano
+Mujer,Alta,ARV_B,71,3.83,4.124611445892175,523,Alto,Desempleado,Sano
+Mujer,Alta,ARV_B,20,5.4,5.561543208799424,295,Muy Alto,Independiente,VIH
+Mujer,Baja,ARV_A,57,5.23,5.355152845538142,373,Muy Alto,Independiente,VIH
+Mujer,Media,ARV_B,63,4.47,4.731440061207814,326,Bajo,Empleado,VIH
+Hombre,Alta,ARV_A,41,4.64,4.834082356542745,1002,Bajo,Desempleado,Sano
+Hombre,Alta,ARV_B,67,6.03,6.395705468927183,212,Alto,Desempleado,VIH
+Mujer,Alta,ARV_B,49,3.79,3.781711206847955,976,Bajo,Independiente,Sano
+Mujer,Baja,ARV_B,64,5.16,5.489226463547052,944,Moderado,Estudiante,VIH
+Mujer,Baja,ARV_A,39,4.26,4.732830392726932,838,Moderado,Estudiante,Sano
+Mujer,Media,ARV_A,40,4.24,4.449537401856853,254,Alto,Desempleado,VIH
+Mujer,Baja,ARV_B,19,5.82,6.114414212890985,660,Muy Bajo,Desempleado,VIH
+Mujer,Alta,ARV_A,44,5.49,5.782454948463869,534,Muy Bajo,Jubilado,VIH
+Mujer,Media,ARV_A,59,5.48,5.567802428920822,554,Muy Bajo,Desempleado,VIH
+Mujer,Alta,ARV_A,19,6.07,6.416114663969032,972,Bajo,Jubilado,VIH
+Hombre,Alta,ARV_A,43,4.53,4.595959025598404,667,Muy Bajo,Estudiante,Sano
+Mujer,Baja,ARV_A,34,5.32,5.54323204018762,625,Muy Bajo,Jubilado,VIH
+Hombre,Media,ARV_A,57,4.13,4.460786954960374,858,Moderado,Jubilado,Sano
+Mujer,Baja,ARV_B,50,4.89,5.060978304389993,920,Muy Bajo,Jubilado,VIH
+Mujer,Baja,ARV_B,26,4.34,4.607124898956741,1196,Muy Alto,Independiente,Sano
+Hombre,Media,ARV_A,60,4.62,4.952273905395637,1146,Muy Bajo,Desempleado,Sano
+Mujer,Alta,ARV_B,71,5.21,5.4983740856096,826,Bajo,Independiente,VIH
+Hombre,Alta,ARV_B,65,3.52,3.55890515299054,863,Muy Alto,Jubilado,Sano
+Mujer,Media,ARV_B,56,7.01,7.327252472464859,232,Bajo,Empleado,VIH
+Mujer,Alta,ARV_B,46,3.29,3.650441134238829,606,Moderado,Empleado,Sano
+Hombre,Media,ARV_A,59,3.04,2.989495423700253,150,Muy Bajo,Independiente,VIH
