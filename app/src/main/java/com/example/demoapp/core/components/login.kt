@@ -1,5 +1,7 @@
 package com.example.demoapp.core.components
 
+import android.util.Patterns
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -44,6 +47,7 @@ import com.example.demoapp.R
 
 @Composable
 fun Login() {
+    var context= LocalContext.current;
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -119,8 +123,8 @@ fun Login() {
 
         TextButton(
             onClick = {
-
             },
+
             modifier = Modifier.align(Alignment.End)
         ) {
             Text("Forgot Password?", color = Color(0xFF1E88E5))
@@ -130,7 +134,10 @@ fun Login() {
 
         Button(
             onClick = {
-
+                if (email=="ana@gmail.com" && password=="123")
+                    Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
+                else
+                    Toast.makeText(context, "Login unsuccessful", Toast.LENGTH_LONG).show()
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -152,7 +159,7 @@ fun Login() {
         Spacer(modifier = Modifier.height(24.dp))
 
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-            SocialButton(iconRes = android.R.drawable.ic_menu_info_details) 
+            SocialButton(iconRes = R.drawable.ios_logo)
             SocialButton(iconRes = android.R.drawable.ic_menu_send) 
         }
 
@@ -177,7 +184,29 @@ fun SocialButton(iconRes: Int) {
         border = BorderStroke(1.dp, Color.LightGray)
     ) {
         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-            Icon(painterResource(id = iconRes), contentDescription = null, modifier = Modifier.size(24.dp), tint = Color.Unspecified)
+            Icon(
+                painterResource(id = iconRes),
+                contentDescription = null,
+                modifier = Modifier.size(24.dp),
+                tint = Color.Unspecified
+            )
         }
     }
+
+    fun validateEmail(email: String): String? {
+        return when {
+            email.isEmpty() -> "El email es obligatorio"
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> "Ingresa un email válido"
+            else -> null
+        }
+    }
+
+    fun validatePassword(password: String): String? {
+        return when {
+            password.isEmpty() -> "La contraseña es obligatoria"
+            password.length < 6 -> "La contraseña debe tener al menos 6 caracteres"
+            else -> null
+        }
+    }
+
 }
