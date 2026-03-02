@@ -43,25 +43,13 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.demoapp.R
 
 @Composable
-fun Login() {
-    var context= LocalContext.current;
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var passwordVisible by remember { mutableStateOf(false) }
-
-
-    // Permite controlar cuándo mostrar los errores
-    var showEmailError by remember { mutableStateOf(false) }
-    var showPasswordError by remember { mutableStateOf(false) }
-
-    // Mensajes de error
-    val emailError = if (showEmailError) validateEmail(email) else null
-    val passwordError = if (showPasswordError) validatePassword(password) else null
-    val isFormValid = validateEmail(email) == null && validatePassword(password) == null
-
+fun Login(
+    viewModel: LoginViewModel = viewModel()
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -101,12 +89,14 @@ fun Login() {
         Spacer(modifier = Modifier.height(32.dp))
 
         OutlinedTextField(
-            value = email,
+            value = viewModel.email.value,
             onValueChange = {
-                email = it
-                showEmailError = true
+                viewModel.email.onChange(it)
             },
             label = { Text("Email Address") },
+            isError = !viewModel.email.isValid, // Se muestra el borde rojo si hay error
+            supportingText = viewModel.email.error?.let { error ->
+                { Text(text = error) } },
             leadingIcon = { Icon(painterResource(id = android.R.drawable.ic_dialog_email), contentDescription = null, modifier = Modifier.size(24.dp)) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
@@ -116,20 +106,21 @@ fun Login() {
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
-            value = password,
-            onValueChange = { password = it
-                showPasswordError=true},
+            value = viewModel.password.value,
+            onValueChange = {
+                viewModel.password.onChange(it)
+            },
             label = { Text("Password") },
             leadingIcon = { Icon(painterResource(id = android.R.drawable.ic_lock_idle_lock), contentDescription = null) },
             trailingIcon = {
-                IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                IconButton(onClick = { viewModel.passwordVisible = !viewModel.passwordVisible }) {
                     Icon(
-                        painter = painterResource(id = if (passwordVisible) android.R.drawable.ic_menu_view else android.R.drawable.ic_partial_secure),
+                        painter = painterResource(id = if (viewModel.passwordVisible) android.R.drawable.ic_menu_view else android.R.drawable.ic_partial_secure),
                         contentDescription = null
                     )
                 }
             },
-            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            visualTransformation = if (viewModel.passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color.LightGray)
@@ -148,11 +139,8 @@ fun Login() {
 
         Button(
             onClick = {
-                if (email=="ana@gmail.com" && password=="123")
-                    Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
-                else
-                    Toast.makeText(context, "Login unsuccessful", Toast.LENGTH_LONG).show()
-            },
+             },
+            enabled=viewModel.isFormValid,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
