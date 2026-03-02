@@ -1,4 +1,4 @@
-package com.example.demoapp.core.components
+package com.example.demoapp.feature.login
 
 import android.util.Patterns
 import android.widget.Toast
@@ -52,6 +52,16 @@ fun Login() {
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
+
+    // Permite controlar cuándo mostrar los errores
+    var showEmailError by remember { mutableStateOf(false) }
+    var showPasswordError by remember { mutableStateOf(false) }
+
+    // Mensajes de error
+    val emailError = if (showEmailError) validateEmail(email) else null
+    val passwordError = if (showPasswordError) validatePassword(password) else null
+    val isFormValid = validateEmail(email) == null && validatePassword(password) == null
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -92,7 +102,10 @@ fun Login() {
 
         OutlinedTextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange = {
+                email = it
+                showEmailError = true
+            },
             label = { Text("Email Address") },
             leadingIcon = { Icon(painterResource(id = android.R.drawable.ic_dialog_email), contentDescription = null, modifier = Modifier.size(24.dp)) },
             modifier = Modifier.fillMaxWidth(),
@@ -104,7 +117,8 @@ fun Login() {
 
         OutlinedTextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = { password = it
+                showPasswordError=true},
             label = { Text("Password") },
             leadingIcon = { Icon(painterResource(id = android.R.drawable.ic_lock_idle_lock), contentDescription = null) },
             trailingIcon = {
@@ -193,20 +207,21 @@ fun SocialButton(iconRes: Int) {
         }
     }
 
-    fun validateEmail(email: String): String? {
-        return when {
-            email.isEmpty() -> "El email es obligatorio"
-            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> "Ingresa un email válido"
-            else -> null
-        }
-    }
+}
 
-    fun validatePassword(password: String): String? {
-        return when {
-            password.isEmpty() -> "La contraseña es obligatoria"
-            password.length < 6 -> "La contraseña debe tener al menos 6 caracteres"
-            else -> null
-        }
-    }
 
+fun validateEmail(email: String): String? {
+    return when {
+        email.isEmpty() -> "El email es obligatorio"
+        !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> "Ingresa un email válido"
+        else -> null
+    }
+}
+
+fun validatePassword(password: String): String? {
+    return when {
+        password.isEmpty() -> "La contraseña es obligatoria"
+        password.length < 6 -> "La contraseña debe tener al menos 6 caracteres"
+        else -> null
+    }
 }
