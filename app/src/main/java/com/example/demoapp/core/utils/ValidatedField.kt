@@ -4,29 +4,27 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
-class ValidatedField<T>(
-    private val initialValue: T,
-    private val validate: (T) -> String?
+class ValidatedField(
+    initialValue: String,
+    private val validator: (String) -> String?
 ) {
     var value by mutableStateOf(initialValue)
         private set
 
-    var showError by mutableStateOf(false)
+    var error by mutableStateOf<String?>(null)
         private set
 
-    val error: String?
-        get() = if (showError) validate(value) else null
-
     val isValid: Boolean
-        get() = validate(value) == null
+        get() = error == null && value.isNotBlank()
 
-    fun onChange(newValue: T) {
+    fun onChange(newValue: String) {
         value = newValue
-        showError = true
+        error = validator(newValue)
     }
 
     fun reset() {
-        value = initialValue
-        showError = false
+        value = ""
+        error = null
     }
 }
+
