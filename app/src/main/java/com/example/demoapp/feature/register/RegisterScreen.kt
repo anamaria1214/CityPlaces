@@ -24,8 +24,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.demoapp.core.ui.ErrorModal
 import com.example.demoapp.core.utils.RequestResult
+import kotlinx.coroutines.launch
 
 // Colores de la pantalla (extraídos de la imagen)
 private val BlueAccent = Color(0xFF1E88E5)
@@ -44,14 +44,20 @@ fun RegisterScreen(
     onNavigateToLogin: () -> Unit = {}
 ) {
     val registerResult by viewModel.registerResult.collectAsState()
-    val errorModal by viewModel.errorModal.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
     var passwordVisible by remember { mutableStateOf(false) }
 
-    // Modal de error genérico — se muestra sobre cualquier contenido
-    ErrorModal(
-        state = errorModal,
-        onDismiss = { viewModel.clearError() }
-    )
+    LaunchedEffect(registerResult) {
+        registerResult?.let { result ->
+            val message = when (result) {
+                is RequestResult.Success -> result.message
+                is RequestResult.Failure -> result.errorMessage
+            }
+            scope.launch { snackbarHostState.showSnackbar(message) }
+            viewModel.resetRegisterResult()
+        }
+    }
 
     // Lista de ciudades de ejemplo para el Dropdown
     val cities = listOf("New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Miami")
@@ -59,6 +65,7 @@ fun RegisterScreen(
 
     Scaffold(
         containerColor = Color.White,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = {
@@ -283,28 +290,6 @@ fun RegisterScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // -------- Resultado (éxito/error) --------
-            registerResult?.let { result ->
-                when (result) {
-                    is RequestResult.Success -> {
-                        Text(
-                            text = result.message,
-                            color = Color(0xFF388E3C),
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                    is RequestResult.Failure -> {
-                        Text(
-                            text = result.errorMessage,
-                            color = ErrorRed,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-            }
 
             // -------- Botón Create Account --------
             Button(
