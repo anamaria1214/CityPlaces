@@ -9,8 +9,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -26,6 +24,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.demoapp.core.ui.ErrorModal
 import com.example.demoapp.core.utils.RequestResult
 
 // Colores de la pantalla (extraídos de la imagen)
@@ -45,7 +44,14 @@ fun RegisterScreen(
     onNavigateToLogin: () -> Unit = {}
 ) {
     val registerResult by viewModel.registerResult.collectAsState()
+    val errorModal by viewModel.errorModal.collectAsState()
     var passwordVisible by remember { mutableStateOf(false) }
+
+    // Modal de error genérico — se muestra sobre cualquier contenido
+    ErrorModal(
+        state = errorModal,
+        onDismiss = { viewModel.clearError() }
+    )
 
     // Lista de ciudades de ejemplo para el Dropdown
     val cities = listOf("New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Miami")
@@ -211,14 +217,16 @@ fun RegisterScreen(
                 onValueChange = { viewModel.password.onChange(it) },
                 label = { Text("Password") },
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                // Reemplazamos el icono del ojo por un texto clicable (MOSTRAR/OCULTAR)
                 trailingIcon = {
-                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(
-                            imageVector = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
-                            contentDescription = if (passwordVisible) "Ocultar contraseña" else "Mostrar contraseña",
-                            tint = SubtitleGray
-                        )
-                    }
+                    Text(
+                        text = if (passwordVisible) "OCULTAR" else "MOSTRAR",
+                        color = SubtitleGray,
+                        fontSize = 12.sp,
+                        modifier = Modifier
+                            .clickable { passwordVisible = !passwordVisible }
+                            .padding(end = 8.dp)
+                    )
                 },
                 isError = viewModel.password.error != null,
                 supportingText = viewModel.password.error?.let { error ->
