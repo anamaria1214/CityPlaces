@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.demoapp.core.utils.ErrorModalState
 import com.example.demoapp.core.utils.RequestResult
 import com.example.demoapp.core.utils.ValidatedField
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,6 +13,18 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class RegisterViewModel : ViewModel() {
+
+    // -------- Modal de error genérico --------
+    private val _errorModal = MutableStateFlow<ErrorModalState?>(null)
+    val errorModal: StateFlow<ErrorModalState?> = _errorModal.asStateFlow()
+
+    fun showError(title: String = "Error", message: String) {
+        _errorModal.value = ErrorModalState(title = title, message = message)
+    }
+
+    fun clearError() {
+        _errorModal.value = null
+    }
 
     val fullName = ValidatedField("") { value ->
         when {
@@ -91,6 +104,10 @@ class RegisterViewModel : ViewModel() {
             _registerResult.value = RequestResult.Success("Cuenta creada exitosamente")
         } else {
             _registerResult.value = RequestResult.Failure("Por favor corrige los errores del formulario")
+            showError(
+                title = "Formulario incompleto",
+                message = "Revisa los campos marcados en rojo antes de continuar."
+            )
         }
     }
 

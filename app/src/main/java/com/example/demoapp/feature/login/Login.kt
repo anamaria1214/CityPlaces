@@ -43,13 +43,23 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.demoapp.R
+import com.example.demoapp.core.ui.ErrorModal
 
 @Composable
 fun Login(
     viewModel: LoginViewModel = viewModel()
 ) {
+    val errorModal by viewModel.errorModal.collectAsState()
+
+    // Modal de error genérico — se muestra sobre cualquier contenido
+    ErrorModal(
+        state = errorModal,
+        onDismiss = { viewModel.clearError() }
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -139,8 +149,16 @@ fun Login(
 
         Button(
             onClick = {
-             },
-            enabled=viewModel.isFormValid,
+                if (viewModel.isFormValid) {
+                    // TODO: llamar al repositorio/usecase de login
+                } else {
+                    viewModel.showError(
+                        title = "Credenciales inválidas",
+                        message = "Revisa tu email y contraseña e inténtalo de nuevo."
+                    )
+                }
+            },
+            enabled = viewModel.isFormValid,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
