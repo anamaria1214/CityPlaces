@@ -27,10 +27,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.demoapp.R
 import com.example.demoapp.feature.login.Login
+import com.example.demoapp.feature.login.LoginViewModel
 
 @Composable
 fun HomeScreen(
+    onNavigateToUsers: () -> Unit,
+    viewModel: LoginViewModel = viewModel()
 ) {
     Column(
         modifier = Modifier
@@ -49,7 +54,7 @@ fun HomeScreen(
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Icon(
-                    painter = painterResource(id = android.R.drawable.ic_menu_share), // QUE NO SE ME OLVIDE CAMBIARLO
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground), // QUE NO SE ME OLVIDE CAMBIARLO
                     contentDescription = "Logo",
                     modifier = Modifier.size(50.dp),
                     tint = Color(0xFF1E88E5)
