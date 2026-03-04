@@ -72,6 +72,7 @@ class RegisterViewModel : ViewModel() {
     private val _registerResult = MutableStateFlow<RequestResult?>(null)
     val registerResult: StateFlow<RequestResult?> = _registerResult.asStateFlow()
 
+
     fun onTermsChange(accepted: Boolean) {
         termsAccepted = accepted
         showTermsError = true

@@ -38,6 +38,7 @@ private val DividerGray = Color(0xFFBDBDBD)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+
 fun RegisterScreen(
     viewModel: RegisterViewModel = viewModel(),
     onNavigateBack: () -> Unit = {},
