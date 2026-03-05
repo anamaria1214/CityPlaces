@@ -26,13 +26,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.Image
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.demoapp.R
 import com.example.demoapp.feature.login.LoginViewModel
 
 @Composable
+@Preview
 fun HomeScreen(
-    onNavigateToUsers: () -> Unit,
+    onNavigateToUsers: () -> Unit = {},
     viewModel: LoginViewModel = viewModel()
 ) {
     Column(
@@ -52,7 +54,8 @@ fun HomeScreen(
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_app_logo),
+                    // painterResource en Compose no soporta layer-list; usar vector o imagen raster.
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "Logo",
                     modifier = Modifier.size(50.dp)
                 )
