@@ -15,21 +15,19 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.Image
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.demoapp.R
-import com.example.demoapp.feature.login.Login
 import com.example.demoapp.feature.login.LoginViewModel
 
 @Composable
@@ -53,11 +51,10 @@ fun HomeScreen(
             shape = RoundedCornerShape(24.dp)
         ) {
             Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground), // QUE NO SE ME OLVIDE CAMBIARLO
+                Image(
+                    painter = painterResource(id = R.drawable.ic_app_logo),
                     contentDescription = "Logo",
-                    modifier = Modifier.size(50.dp),
-                    tint = Color(0xFF1E88E5)
+                    modifier = Modifier.size(50.dp)
                 )
             }
         }
