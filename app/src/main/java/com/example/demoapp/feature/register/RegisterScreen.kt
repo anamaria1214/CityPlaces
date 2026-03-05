@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.demoapp.core.utils.RequestResult
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 // Colores de la pantalla (extraídos de la imagen)
 private val BlueAccent = Color(0xFF1E88E5)
@@ -45,7 +45,6 @@ fun RegisterScreen(
 ) {
     val registerResult by viewModel.registerResult.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
     var passwordVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(registerResult) {
@@ -54,7 +53,14 @@ fun RegisterScreen(
                 is RequestResult.Success -> result.message
                 is RequestResult.Failure -> result.errorMessage
             }
-            scope.launch { snackbarHostState.showSnackbar(message) }
+            snackbarHostState.showSnackbar(message)
+
+            if (result is RequestResult.Success) {
+                // Darle al usuario un momento para ver el mensaje
+                delay(1000)
+                onNavigateToLogin()
+            }
+
             viewModel.resetRegisterResult()
         }
     }
@@ -65,7 +71,17 @@ fun RegisterScreen(
 
     Scaffold(
         containerColor = Color.White,
-        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+        snackbarHost = {
+            SnackbarHost(snackbarHostState) { data ->
+                val isError = registerResult is RequestResult.Failure
+                Snackbar(
+                    containerColor = if (isError) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                    contentColor = Color.White
+                ) {
+                    Text(data.visuals.message)
+                }
+            }
+        },
         topBar = {
             TopAppBar(
                 title = {
@@ -374,6 +390,7 @@ fun RegisterScreen(
                 ) {
                     // Reemplaza con tu ícono de Google real:
                     // Image(painter = painterResource(id = R.drawable.ic_google), ...)
+
                     Text(text = "G", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color(0xFF4285F4))
                 }
 
@@ -389,6 +406,7 @@ fun RegisterScreen(
                 ) {
                     // Reemplaza con tu ícono de Apple real:
                     // Image(painter = painterResource(id = R.drawable.ic_apple), ...)
+
                     Text(text = "iOS", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = DarkText)
                 }
             }
